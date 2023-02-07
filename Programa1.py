@@ -49,14 +49,6 @@ def main():
     print("\tMatriz normalizada")
 
     """5. Guardar la imagen de la nueva matriz"""
-    '''
-    print("\tGuardando imagen")
-    plt.clf()
-    plt.imshow(matrix, cmap='gray', norm='linear')
-    plt.axis('off')
-    plt.savefig('/home/carlos/Desktop/binarizada.jpg', bbox_inches='tight', pad_inches=0)
-    print("\tImagen guardada")
-    '''
     from PIL import Image
     im = Image.fromarray((matrix * 255).astype(np.uint8))
     im.save("/home/carlos/Desktop/binarizada.jpg")
