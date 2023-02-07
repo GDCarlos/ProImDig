@@ -20,10 +20,11 @@ def main():
     """1. Geneara la matriz con valores aleatorios"""
     matrix = matrixGen(rows=500, columns=600)
     print(type(matrix))
+    print(len(matrix[0]))
 
     """2. Guardar la imagen en formato jpg"""
     print("\tGuardando imagen")
-    fig = plt.imshow(matrix, cmap='gray')
+    plt.imshow(matrix, cmap='gray')
     plt.axis('off')
     plt.savefig('/home/carlos/Desktop/grayScale.jpg', bbox_inches='tight', pad_inches=0)
     print("\tImagen guardada")
@@ -39,12 +40,26 @@ def main():
 
     """4. Binarizar la matriz"""
     print("\tNormalizando la matriz")
-
+    for i in range(500):
+        for j in range(600):
+            if matrix[i][j] < 128:
+                matrix[i][j] = 0
+            else:
+                matrix[i][j] = 1
     print("\tMatriz normalizada")
 
     """5. Guardar la imagen de la nueva matriz"""
+    '''
     print("\tGuardando imagen")
-
+    plt.clf()
+    plt.imshow(matrix, cmap='gray', norm='linear')
+    plt.axis('off')
+    plt.savefig('/home/carlos/Desktop/binarizada.jpg', bbox_inches='tight', pad_inches=0)
+    print("\tImagen guardada")
+    '''
+    from PIL import Image
+    im = Image.fromarray((matrix * 255).astype(np.uint8))
+    im.save("/home/carlos/Desktop/binarizada.jpg")
     print("\tImagen guardada")
 
 
