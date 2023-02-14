@@ -30,6 +30,7 @@ def generarHistograma(matrix):
     plt.title("Hisograma de frecuencias")
     plt.savefig('/home/carlos/Desktop/histogram.jpg')
 
+
 def normalizarMatriz(matrix):
     print("\tNormalizando la matriz")
     for i in range(500):
@@ -39,6 +40,30 @@ def normalizarMatriz(matrix):
             else:
                 matrix[i][j] = 1
     return matrix
+
+
+def adiacencia4():
+    '''
+    rows, columns = matrix.shape
+    for i in range(rows):
+        for j in range(columns):
+            if matrix[0][0] == 0:
+                pass
+            if matrix[]
+    '''
+    # No se que hace, pero funciona
+    matrix = np.random.randint(0, 11, (500, 600, 3))
+
+    # Scale the values of the matrix between 0 and 255
+    matrix = matrix / 10 * 255
+    matrix = matrix.astype(np.uint8)
+
+    # Convert the numpy array to a PIL Image object
+    img = Image.fromarray(matrix, 'RGB')
+
+    # Save the image to a file
+    img.save('/home/carlos/Desktop/aColor.png')
+
 
 def main():
     """1. Geneara la matriz con valores aleatorios"""
@@ -59,6 +84,12 @@ def main():
 
     """5. Guardar la imagen de la nueva matriz"""
     guardarImagen((matrix * 255).astype(np.uint8), "binarizada")
+
+    """6. Etiquetado de componentes conectadas"""
+    adiacencia4()
+    # """7. Guarda la imagen a color"""
+    # img = Image.fromarray(matrix, 'RGB')
+    # img.save('/home/carlos/Desktop/image2.png')
 
 
 if __name__ == '__main__':
