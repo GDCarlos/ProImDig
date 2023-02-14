@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
 
+ruta = "/home/carlos/Desktop/"
 
 def matrixGen(rows, columns):
     print("\nGenerando matriz de 500x600")
@@ -19,7 +20,7 @@ def matrixGen(rows, columns):
 def guardarImagen(matrix, nombre):
     print(f"\tGuardando imagen: {nombre}")
     im = Image.fromarray(matrix.astype(np.uint8))
-    im.save(f'/home/carlos/Desktop/{nombre}.jpg')
+    im.save(f'{ruta}{nombre}.jpg')
     # print("\tImagen guardada")
 
 
@@ -28,7 +29,7 @@ def generarHistograma(matrix):
     temp = np.hstack(matrix)
     plt.hist(temp, bins='auto')
     plt.title("Hisograma de frecuencias")
-    plt.savefig('/home/carlos/Desktop/histogram.jpg')
+    plt.savefig(f'{ruta}histogram.jpg')
 
 
 def normalizarMatriz(matrix):
@@ -52,17 +53,18 @@ def adiacencia4():
             if matrix[]
     '''
     # No se que hace, pero funciona
-    matrix = np.random.randint(0, 11, (500, 600, 3))
+    matrix = np.random.randint(0, 10, (500, 600, 3))
 
     # Scale the values of the matrix between 0 and 255
     matrix = matrix / 10 * 255
+
     matrix = matrix.astype(np.uint8)
 
     # Convert the numpy array to a PIL Image object
     img = Image.fromarray(matrix, 'RGB')
 
     # Save the image to a file
-    img.save('/home/carlos/Desktop/aColor.png')
+    img.save(f'{ruta}aColor.png')
 
 
 def main():
